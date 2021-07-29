@@ -1,11 +1,64 @@
 import styles from './styles.module.scss'
+import { useState } from 'react'
 
 export default function Player(){
+    const [reproducao, setReproducao] = useState("./play.svg")
+
+    function onClickReproducao(){
+        if (reproducao === "./play.svg"){
+            setReproducao("./pause.svg")
+        }else{
+            setReproducao("./play.svg")
+        }
+
+    }
+
 
     return ( 
-        <div>
+        <div className={styles.playerContainer}>
+            <header>
+                <img src="/playing.svg" alt="Playing"/>
+                <strong>Tocando agora</strong>
+            </header>
+
+            <div className={styles.emptyPlayer}>
+                <strong>Selecione um podcast para ouvir</strong>
+            </div>
+
+            <footer>
+                <div className={styles.progress}>
+                    <span>00:00</span>
+                    <div className={styles.slider}>
+                    <div className={styles.emptySlider}/>
+                    </div>
+                    <span>00:00</span>
+
+                </div>
+
+                <div className={styles.buttons}>
+                <button type="button">
+                     <img src="./shuffle.svg" alt="Aleatório"></img>
+                    </button>
+                    <button type="button">
+                     <img src="./play-previous.svg" alt="Tocar anterior"/>
+                    </button>
+                    <button className={styles.playButton}  type="button">
+                     <img src="./play.svg" alt="Tocar"/>
+                    </button >
+                    <button type="button">
+                     <img src="./play-next.svg" alt="Tocar próxima"/>
+                    </button>
+                    <button type="button">
+                     <img src="./repeat.svg" alt="Repetir"/>
+                    </button>
+            
+
+                </div>
+            </footer>
+
 
         </div>
     );
 
 }
+
